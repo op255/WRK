@@ -1,0 +1,87 @@
+---
+ansible_python_interpreter: python3
+
+vagrant_hostname: "{{ ansible_facts['domain'] }}"
+vagrant_user: vagrant
+site_path: "/var/www/{{ vagrant_hostname }}"
+
+# Nginx hosts. Each site will get a server entry using the configuration defined
+# here. Set the 'is_php' property for document roots that contain PHP apps like
+# Drupal.
+ssl_certificate_path: "/home/vagrant/ssl/{{ vagrant_hostname }}/{{ vagrant_hostname }}.pem"
+ssl_certificate_key_path: "/home/vagrant/ssl/{{ vagrant_hostname }}/{{ vagrant_hostname }}.key"
+
+nginx_vhosts:
+  - listen: "443 ssl"
+    is_default: true
+    server_name: "{{ vagrant_hostname }} www.{{ vagrant_hostname }}"
+    server_name_redirect: "{{ vagrant_hostname }}"
+    root: "{{ site_path }}/public"
+    is_php: true
+    ssl_parameters:
+      ssl_certificate: "{{ ssl_certificate_path }}"
+      ssl_certificate_key: "{{ ssl_certificate_key_path }}"
+
+  - listen: "443 ssl"
+    server_name: "adminer.{{ vagrant_hostname }}"
+    server_name_redirect: "adminer.{{ vagrant_hostname }}"
+    root: "{{ adminer_install_dir }}"
+    is_php: true
+    ssl_parameters:
+      ssl_certificate: "{{ ssl_certificate_path }}"
+      ssl_certificate_key: "{{ ssl_certificate_key_path }}"
+
+nginx_remove_default_vhost: true
+nginx_ppa_use: true
+nginx_vhost_template: "templates/nginx-vhost.conf.j2"
+
+# PHP Configuration.
+php_webserver_daemon: nginx
+
+php_version: "7.4"
+php_install_recommends: no
+php_memory_limit: "500M"
+php_display_errors: "On"
+php_display_startup_errors: "On"
+php_realpath_cache_size: "1024K"
+php_opcache_enabled_in_ini: true
+php_opcache_memory_consumption: "192"
+php_opcache_max_accelerated_files: 4096
+php_max_input_vars: "4000"
+php_post_max_size: "100M"
+php_packages:
+  - zip
+
+php_enable_php_fpm: true
+php_fpm_listen: "127.0.0.1:9000"
+
+composer_path: /usr/bin/composer
+composer_home_path: "/home/{{ vagrant_user }}/.composer"
+composer_home_owner: "{{ vagrant_user }}"
+composer_home_group: "{{ vagrant_user }}"
+composer_global_packages:
+  - { name: hirak/prestissimo, release: '^0.3' }
+
+# MySQL Configuration.
+mysql_root_password: root
+mysql_slow_query_log_enabled: true
+mysql_slow_query_time: 2
+mysql_wait_timeout: 300
+adminer_install_filename: index.php
+
+# Node.js configuration (if enabled above).
+# Valid examples: "0.10", "0.12", "4.x", "5.x", "6.x".
+nodejs_version: "10.x"
+nodejs_npm_global_packages:
+  - name: npm
+nodejs_install_npm_user: "{{ vagrant_user }}"
+npm_config_prefix: "/home/{{ vagrant_user }}/.npm-global"
+
+installed_extras:
+  - adminer
+  - nodejs
+  - xdebug
+
+# Add any extra apt or yum packages you would like installed.
+extra_packages:
+  - htop

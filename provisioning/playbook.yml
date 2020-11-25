@@ -1,0 +1,70 @@
+---
+- hosts: all
+  become: yes
+
+  vars_files:
+    - vars/vars.yml
+
+  pre_tasks:
+    - name: Install extra apt packages (if any are configured).
+      apt: "name={{ extra_packages | list }} state=present"
+      when:
+        - ansible_os_family == 'Debian'
+        - extra_packages | length
+    - name: Ensure PHP version-specific workspace directory exists.
+      file:
+        path: "/root/php{{ php_version }}"
+        state: directory
+        mode: 0775
+      tags: ['php', 'xdebug']
+
+    - name: Ensure SSL related directory exists.
+      become: yes
+      become_user: vagrant
+      file:
+        path: "/home/vagrant/ssl/{{ vagrant_hostname }}"
+        state: directory
+        mode: 0777
+      tags: ['php', 'xdebug']
+    - name: Generate an OpenSSL private key for vhosts
+      openssl_privatekey:
+        path: "{{ ssl_certificate_key_path }}"
+        mode: 0777
+        type: RSA
+        size: 2048
+      tags: ['openssl', 'webserver']
+    - name: Generate an OpenSSL Certificate Signing Request
+      openssl_csr:
+        path: "{{ ssl_certificate_path }}.csr"
+        privatekey_path: "{{ ssl_certificate_key_path }}"
+        mode: 0777
+        digest: "sha256"
+        common_name: localhost
+        key_usage:
+          - digitalSignature
+        extended_key_usage:
+          - serverAuth
+        subject:
+          commonName: localhost
+        subject_alt_name:
+          - DNS:localhost
+      tags: ['openssl', 'webserver']
+    - name: Generate a Self Signed OpenSSL certificate for vhosts
+      openssl_certificate:
+        path: "{{ ssl_certificate_path }}"
+        csr_path: "{{ ssl_certificate_path }}.csr"
+        privatekey_path: "{{ ssl_certificate_key_path }}"
+        mode: 0777
+        provider: selfsigned
+      tags: ['openssl', 'webserver']
+
+  roles:
+    - { role: geerlingguy.nginx, tags: ['webserver'] }
+    - { role: geerlingguy.php-versions, when: php_version != '', tags: ['php', 'xdebug', 'database'] }
+    - { role: geerlingguy.php, tags: ['php'] }
+    #- { role: geerlingguy.composer }
+    - { role: geerlingguy.mysql, tags: ['database'] }
+    - { role: geerlingguy.php-mysql, tags: ['php', 'database'] }
+    - { role: geerlingguy.php-xdebug, workspace: "/root/php{{ php_version }}", when: '"xdebug" in installed_extras', tags: ['php', 'xdebug'] }
+    - { role: geerlingguy.adminer, when: '"adminer" in installed_extras', tags: ['database'] }
+    - { role: geerlingguy.nodejs, when: '"nodejs" in installed_extras' }
