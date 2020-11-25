@@ -1,0 +1,25 @@
+body {
+    display: block;
+    margin: 8px;
+}
+.topMenu {
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    white-space: nowrap;
+}
+.login{
+    text-align: right;
+}
+.comments {
+    margin-left: 3em;
+}
+.pageList {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+} 
+.pageList > li {
+    display: inline-block;
+}
