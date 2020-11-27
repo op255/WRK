@@ -1,5 +1,5 @@
 <?php
     class Model {
-        public function getId() {}
+        protected $id;
     }
 ?>

@@ -1,6 +1,5 @@
 <?php
     class Post extends Model {
-        protected $id;
         protected $textContent;
 
         public function getId() { return $this->id; }

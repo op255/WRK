@@ -1,12 +1,18 @@
 <?php
-    require __DIR__.'/../models/post.php';
-    class PostController {
+    require_once 'models/post.php';
 
-        public function requestPostId() { return 0; }
+    class PostController extends Controller {
+
+        public function getPostList($page) {
+            $postList = uploadPosts($page);
+            $result = array();
+            foreach ($postList as &$post) {
+                array_push($result, array(
+                    'id' => $post->getId(),
+                    'textContent' => $post->getTextContent()
+                ));
+            }
+            return $result;
+        }
     }
-
-function id($post) {
-    return $post.getId();
-}
-
 ?>
