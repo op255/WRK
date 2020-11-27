@@ -17,30 +17,8 @@
 
     <div class="board">
         <?php
-            foreach ($postsList as &$postId) {
-                echo '<div class="thread">
-                    <div class="post">
-                        <div class="postTopBar">
-                            <div class="postId">';
-                                echo '#'.$postId;
-                            echo '</div>
-                            <div class="replyButton">Reply</div>
-                        </div>
-                        <div class="postContent">This is the content!</div>
-                        <div class="postBottomBar">
-                            Replies:
-                            <div class="replies"></div>
-                        </div>
-                    </div>
-                    <div class="comments">
-                        <div class="reply">
-                            Comment1
-                        </div>
-                        <div class="reply">
-                            Comment2
-                        </div>
-                    </div>
-                </div>';
+            foreach ($postList as &$post) {
+                require 'views/templatePost.php';
             }
         ?>
     </div>

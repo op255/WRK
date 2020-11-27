@@ -4,7 +4,12 @@
     $mpController = new ControllerMainPage();
 
     
-    $postsList = $mpController->getPostsList(1);
+// $postList = array(
+//     'id' => $mpController->getPostIdList(1),
+//     'textContent' => $mpController->getPostContentList(1)
+// );
+
+    $postList = $mpController->getPostList(1);
 
     require_once 'views/templateMainPage.php';
 ?>
