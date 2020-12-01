@@ -17,8 +17,8 @@
 
     <div class="board">
         <?php
-            foreach ($postList as &$post) {
-                require 'views/templatePost.php';
+            foreach ($contentView as &$post) {
+                require 'templates/templatePost.php';
             }
         ?>
     </div>

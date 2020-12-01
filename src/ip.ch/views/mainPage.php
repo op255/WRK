@@ -1,9 +1,8 @@
 <?php
-    require_once 'controllers/postController.php';
+    include 'controllers/postController.php';
+
+    use App\Controllers\PostController;
 
     $pController = new PostController();
-
-    $postList = $pController->getPostList(1);
-
-    require_once 'views/templateMainPage.php';
+    $pController->generateView($pController->getPostList(1), 'templateMainPage.php');
 ?>

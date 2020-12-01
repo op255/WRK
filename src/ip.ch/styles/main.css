@@ -9,7 +9,6 @@ body {
     padding: 0;
     width: 100%;
     white-space: nowrap;
-    background-color: bisque;
 }
 .login{
     text-align: right;
@@ -20,7 +19,7 @@ body {
 .post {
     border-style: solid;
     border-width: 1px;
-    background-color: burlywood;
+    background-color: rgb(230, 200, 104);
 }
 .comments {
     margin-left: 3em;
