@@ -6,7 +6,7 @@
         <div class="replyButton">Reply</div>
     </div>
     <div class="postContent">
-        <?php echo $post['textContent']; ?>
+        <?php echo $post['text_content']; ?>
     </div>
     <div class="postBottomBar">
         Replies:

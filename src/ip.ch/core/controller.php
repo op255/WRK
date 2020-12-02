@@ -6,7 +6,7 @@ use App\Views\View;
 
 class Controller {
 
-	public $model;
+	public $repo;
 	public $view;
 	
 	public function generateView($contentView, $templateView) {
