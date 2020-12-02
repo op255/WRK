@@ -5,13 +5,13 @@
     
 
     class Repository {
-        protected $dbName = 'PostDB';
-        protected $dbHost = 'localhost';
-        protected $dbPort = '3036';
-        protected $dbUser = 'root';
-        protected $dbPass = 'root';
+        protected $name = 'PostDB';
+        protected $host = 'localhost';
+        protected $port = '3036';
+        protected $user = 'root';
+        protected $pass = 'root';
         protected $charset = 'utf8';
-        protected $pdo = FALSE;
+        protected $pdo;
     
 
         public function __construct() {
@@ -20,10 +20,10 @@
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
                 \PDO::ATTR_EMULATE_PREPARES   => false,
             ];
-            $dsn = "mysql:host=$this->dbHost;dbname=$this->dbName;charset=$this->charset;port=$this->dbPort";
+            $dsn = "mysql:host=$this->host;dbname=$this->name;charset=$this->charset;port=$this->port";
 
             try {
-                $this->pdo = new \PDO($dsn, $this->dbUser, $this->dbPass, $options);
+                $this->pdo = new \PDO($dsn, $this->user, $this->pass, $options);
            } catch (\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int)$e->getCode());
            }

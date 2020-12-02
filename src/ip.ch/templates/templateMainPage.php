@@ -7,10 +7,12 @@
 
 <body>
 <div class="topMenu">
-        <h1>IPch</h1>
-        <h2>Welcome back. Again.</h2>
-        <div class="search">Search</div>
-        <div class="login">Log In</div>
+        <div class="topMenuElem">
+            <h1>IPch</h1>
+            <h2>Welcome back. Again.</h2>
+        </div>
+        <div class="topMenuElem">Search</div>
+        <div class="topMenuElem" id="login">Log In</div>
     </div>
 
     <hr>
@@ -23,10 +25,12 @@
         ?>
     </div>
 
-    <ul class="pagesList">
-        <li> <div class="pageButton">Pg1</div> </li>
-        <li> <div class="pageButton">Pg2</div> </li>
-    </ul>
+    <hr>
+
+    <div class="pagesList">
+        <div class="pageButton">Pg1</div>
+        <div class="pageButton">Pg2</div>
+    </div>
 </body>
 
 </HTML>

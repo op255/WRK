@@ -10,9 +10,30 @@ body {
     width: 100%;
     white-space: nowrap;
 }
-.login{
+
+.topMenuElem {
+    height: auto;
+    display: inline-block;
+    width: 30%;
+
+}
+
+#login {
     text-align: right;
 }
+
+#idField {
+    width: 64px;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border-width: 1px;
+}
+
+img {
+    max-width: 160px;
+    height:auto;
+}
+
 .thread {
     width: 100%;
 }
@@ -21,14 +42,19 @@ body {
     border-width: 1px;
     background-color: rgb(230, 200, 104);
 }
+
+.postTopBarElem {
+    display: inline-block;
+}
+
+.postContentElem {
+    display: inline-block;
+}
+
 .comments {
     margin-left: 3em;
 }
-.pageList {
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-} 
-.pageList > li {
+
+.pageButton {
     display: inline-block;
 }
