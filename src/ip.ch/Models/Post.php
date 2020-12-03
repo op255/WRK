@@ -8,9 +8,10 @@
         protected $img_src;
         protected $parent;
 
-        public function getTextContent() {
-            return $this->textContent;
-        }
+        public function getTextContent() { return $this->textContent; }
+        public function getReplyTo() { return $this->reply_to; }
+        public function getImgSrc() { return $this->img_src; }
+        public function getParent() { return $this->parent; }
 
         function __construct(   $id, 
                                 $text_contenet, 

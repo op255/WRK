@@ -18,7 +18,10 @@
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
                 \PDO::ATTR_EMULATE_PREPARES   => false,
             ];
-            $dsn = "mysql:host=$this->host;dbname=$this->name;charset=$this->charset;port=$this->port";
+            $dsn = "mysql:host=$this->host;
+                    dbname=$this->name;
+                    charset=$this->charset;
+                    port=$this->port";
 
             try {
                 $this->pdo = new \PDO($dsn, $this->user, $this->pass, $options);

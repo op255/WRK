@@ -2,7 +2,6 @@
 
     namespace App\Repos;
 
-    use App\Models\Post;
     use Exception;
 
     class PostRepository extends Repository {
@@ -10,8 +9,9 @@
         protected $MAX_PAGE;
 
         public function uploadPosts($page) {
-            if (($page > $this->MAX_PAGE) or ($page < 1))
-                throw new Exception("There is no such page(");
+            if (($page > $this->MAX_PAGE) or ($page < 1)) {
+                throw new Exception("Page not found(");
+            }
 
             $offset = 10 * ($page-1);
             $stm = $this->pdo->query("SELECT * FROM posts ORDER BY id DESC LIMIT $offset, 10");

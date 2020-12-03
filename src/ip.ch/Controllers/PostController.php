@@ -3,9 +3,6 @@
     namespace App\Controllers;
 
     use App\Repos\PostRepository;
-    use App\Models\Post;
-
-    
 
     class PostController extends Controller {
 
@@ -17,7 +14,6 @@
         public function numPages() {
             return $this->repo->numPages();
         }
-
 
         public function __construct() {
             parent::__construct();

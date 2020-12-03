@@ -11,8 +11,8 @@
     </div>
     <hr>
     <h1 align="center">
-        404.
+        404. 
+        <?php echo $contentView->getMessage(); ?>
     </h1>
-    <div> <?php echo $contentView->getMessage(); ?> </div>
 </body>
     

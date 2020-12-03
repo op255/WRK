@@ -1,12 +1,8 @@
 <?php
 
-$path = $_SERVER["REQUEST_URI"];
-
 spl_autoload_register(function ($class) {
 
     $prefix = 'App\\';
-
-    $base_dir = '';
 
     $len = strlen($prefix);
     if (strncmp($prefix, $class, $len) !== 0) {
@@ -15,19 +11,29 @@ spl_autoload_register(function ($class) {
 
     $relative_class = substr($class, $len);
 
-    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+    $file = str_replace('\\', '/', $relative_class) . '.php';
 
     if (file_exists($file)) {
-        require $file;
+        require_once $file;
     }
 });
 
+$path = $_SERVER["REQUEST_URI"];
+
+use App\Dev\DBDevTool;
+
+if ($path == '/dev') {
+
+    $newTextContent = '';
+    $image = '';
+
+    $dbt = new DBDevTool();
+    // $dbt->act('add', array($newTextContent));
+    //$dbt->act('add', array($newTextContent, $image));
+}
+
 
 // Routing will be there
-$page = 1;
-if (isset($_GET['page']))
-    $page = $_GET['page'];
-
 require 'Views/mainPage.php';
 
 ?>

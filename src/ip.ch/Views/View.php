@@ -4,7 +4,7 @@
 
     class View {
         function generate($contentView, $templateView) {
-            require 'templates/'.$templateView;
+            require 'Templates/'.$templateView;
         }
     }
 ?>
