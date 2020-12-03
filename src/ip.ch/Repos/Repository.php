@@ -2,8 +2,6 @@
 
     namespace App\Repos;
 
-    
-
     class Repository {
         protected $name = 'PostDB';
         protected $host = 'localhost';
@@ -27,9 +25,6 @@
            } catch (\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int)$e->getCode());
            }
-        }
-        public function __destruct() {
-            #mysql_close($this->conn);
         }
     }
 ?>

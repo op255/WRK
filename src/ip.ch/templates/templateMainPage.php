@@ -8,7 +8,7 @@
 <body>
 <div class="topMenu">
         <div class="topMenuElem">
-            <h1>IPch</h1>
+           <h1>IPch</h1>
             <h2>Welcome back. Again.</h2>
         </div>
         <div class="topMenuElem">Search</div>
@@ -19,7 +19,7 @@
 
     <div class="board">
         <?php
-            foreach ($contentView as &$post) {
+            foreach ($contentView['postList'] as &$post) {
                 require 'templates/templatePost.php';
             }
         ?>
@@ -28,8 +28,11 @@
     <hr>
 
     <div class="pagesList">
-        <div class="pageButton">Pg1</div>
-        <div class="pageButton">Pg2</div>
+        <?php
+            for ($i=1; $i <= $contentView['numPages']; ++$i) {
+                echo '<div class="pageButton"><a href="?page='.$i.'">'.$i.'</a></div>';
+            }
+        ?>
     </div>
 </body>
 
