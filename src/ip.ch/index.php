@@ -26,10 +26,12 @@ if ($path == '/dev') {
 
     $newTextContent = '';
     $image = '';
+    $id = 13;
 
     $dbt = new DBDevTool();
     // $dbt->act('add', array($newTextContent));
-    //$dbt->act('add', array($newTextContent, $image));
+    // $dbt->act('add', array($newTextContent, $image));
+    // $dbt->act('del', array($id));
 }
 
 

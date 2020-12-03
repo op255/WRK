@@ -20,6 +20,10 @@
                         $this->addRecord($args[0]);
                     break;
 
+                case 'del':
+                    $this->delRecord($args[0]);
+                    break;
+
             }
             echo 'Action is done!';
         }
@@ -27,7 +31,7 @@
         private function addRecord($textContent, $imgSrc = NULL) {
             if ($imgSrc) {
                 $sql = "INSERT INTO posts (text_content, img_src) VALUES (?,?)";
-                $stmt= $pdo->prepare($sql);
+                $stmt= $this->pdo->prepare($sql);
                 $stmt->execute([$textContent, $imgSrc]);
             } 
             else {
@@ -35,6 +39,12 @@
                 $stmt= $this->pdo->prepare($sql);
                 $stmt->execute([$textContent]);
             }
+        }
+
+        private function delRecord($id) {
+            $sql = "DELETE FROM posts WHERE id=?";
+            $stmt= $this->pdo->prepare($sql);
+            $stmt->execute([$id]);
         }
 
         public function __construct() {
