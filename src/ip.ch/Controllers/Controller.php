@@ -6,8 +6,8 @@ use App\Views\View;
 
 class Controller {
 
-	public $repo;
-	public $view;
+	protected $repo;
+	protected $view;
 	
 	public function generateView($contentView, $templateView) {
 		$this->view->generate($contentView, $templateView);

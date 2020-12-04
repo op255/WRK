@@ -22,7 +22,7 @@ $path = $_SERVER["REQUEST_URI"];
 
 use App\Dev\DBDevTool;
 
-if ($path == '/dev') {
+if ($path == '/act') {
 
     $newTextContent = '';
     $image = '';
@@ -31,7 +31,7 @@ if ($path == '/dev') {
     $dbt = new DBDevTool();
     // $dbt->act('add', array($newTextContent));
     // $dbt->act('add', array($newTextContent, $image));
-    // $dbt->act('del', array($id));
+    // $dbt->act('del', $id);
 }
 
 
