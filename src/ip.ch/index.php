@@ -1,13 +1,41 @@
 <?php
 
+spl_autoload_register(function ($class) {
+
+    $prefix = 'App\\';
+
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) !== 0) {
+        return;
+    }
+
+    $relative_class = substr($class, $len);
+
+    $file = str_replace('\\', '/', $relative_class) . '.php';
+
+    if (file_exists($file)) {
+        require_once $file;
+    }
+});
+
 $path = $_SERVER["REQUEST_URI"];
 
-include 'core/model.php';
-include 'core/view.php';
-include 'core/controller.php';
-include 'core/repository.php';
+use App\Dev\DBDevTool;
+
+if ($path == '/act') {
+
+    $newTextContent = '';
+    $image = '';
+    $id = 13;
+
+    $dbt = new DBDevTool();
+    // $dbt->act('add', array($newTextContent));
+    // $dbt->act('add', array($newTextContent, $image));
+    // $dbt->act('del', $id);
+}
+
 
 // Routing will be there
-require 'views/mainPage.php';
+require 'Views/mainPage.php';
 
 ?>

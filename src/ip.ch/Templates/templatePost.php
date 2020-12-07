@@ -12,7 +12,7 @@
                     echo '<img src="'.$post['img_src'].'">'; 
             ?>
         </div>
-        <div class="postContentElem">
+        <div class="postContentElem" id="text_content">
             <?php echo $post['text_content']; ?>
         </div>
     </div>

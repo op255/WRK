@@ -2,8 +2,6 @@
 
     namespace App\Repos;
 
-    
-
     class Repository {
         protected $name = 'PostDB';
         protected $host = 'localhost';
@@ -20,16 +18,16 @@
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
                 \PDO::ATTR_EMULATE_PREPARES   => false,
             ];
-            $dsn = "mysql:host=$this->host;dbname=$this->name;charset=$this->charset;port=$this->port";
+            $dsn = "mysql:host=$this->host;
+                    dbname=$this->name;
+                    charset=$this->charset;
+                    port=$this->port";
 
             try {
                 $this->pdo = new \PDO($dsn, $this->user, $this->pass, $options);
            } catch (\PDOException $e) {
                 throw new \PDOException($e->getMessage(), (int)$e->getCode());
            }
-        }
-        public function __destruct() {
-            #mysql_close($this->conn);
         }
     }
 ?>
