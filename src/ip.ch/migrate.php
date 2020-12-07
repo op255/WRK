@@ -48,7 +48,9 @@
 
     $sqlInsert = "INSERT INTO posts (text_content) VALUES (?)";
 
-    for ($i = 0; $i < 34; ++$i) {
+    $count = isset($argv[1]) ? $argv[1] : 34;
+
+    for ($i = 0; $i < $count; ++$i) {
         $stmt= $pdo->prepare($sqlInsert);
         $stmt->execute([$lipsum->paragraph()]);
     }
