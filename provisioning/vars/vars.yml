@@ -3,7 +3,9 @@ ansible_python_interpreter: python3
 
 vagrant_hostname: "{{ ansible_facts['domain'] }}"
 vagrant_user: vagrant
-site_path: "/var/www/{{ vagrant_hostname }}"
+site_name: "ip.ch"
+site_path: "/var/www/{{ vagrant_hostname }}/{{ site_name }}"
+
 
 # Nginx hosts. Each site will get a server entry using the configuration defined
 # here. Set the 'is_php' property for document roots that contain PHP apps like
@@ -14,9 +16,9 @@ ssl_certificate_key_path: "/home/vagrant/ssl/{{ vagrant_hostname }}/{{ vagrant_h
 nginx_vhosts:
   - listen: "443 ssl"
     is_default: true
-    server_name: "{{ vagrant_hostname }} www.{{ vagrant_hostname }}"
-    server_name_redirect: "{{ vagrant_hostname }}"
-    root: "{{ site_path }}/public"
+    server_name: "{{ site_name }} www.{{ site_name }}"
+    server_name_redirect: "{{ site_name }}"
+    root: "{{ site_path }}"
     is_php: true
     ssl_parameters:
       ssl_certificate: "{{ ssl_certificate_path }}"
