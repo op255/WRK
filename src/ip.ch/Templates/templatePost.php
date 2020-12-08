@@ -21,11 +21,11 @@
         <div class="replies"></div>
     </div>
 </div>
-<div class="comments">
+<!-- <div class="comments">
     <div class="reply">
         Comment1
     </div>
     <div class="reply">
         Comment2
     </div>
-</div>
+</div> -->

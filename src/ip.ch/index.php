@@ -20,22 +20,12 @@ spl_autoload_register(function ($class) {
 
 $path = $_SERVER["REQUEST_URI"];
 
-use App\Dev\DBDevTool;
-
-if ($path == '/act') {
-
-    $newTextContent = '';
-    $image = '';
-    $id = 13;
-
-    $dbt = new DBDevTool();
-    // $dbt->act('add', array($newTextContent));
-    // $dbt->act('add', array($newTextContent, $image));
-    // $dbt->act('del', $id);
+if (substr($path, 7) == "/thread") {
+    $id = (int)substr($path, 7, strlen($path));
+    $page = $id ? "threadPage" : "404";
+    require "Views/$page.php";
 }
-
-
-// Routing will be there
-require 'Views/mainPage.php';
+else
+    require 'Views/mainPage.php';
 
 ?>

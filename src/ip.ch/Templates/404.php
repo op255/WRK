@@ -10,7 +10,9 @@
     <hr>
     <h1 align="center">
         404. 
-        <?php echo $contentView->getMessage(); ?>
+        <?php 
+            if($e) echo $contentView->getMessage(); 
+        ?>
     </h1>
     <h2 align="center">
         <a href="?page=1">Main page</a>
