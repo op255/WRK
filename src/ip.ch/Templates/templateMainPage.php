@@ -19,8 +19,13 @@
 
     <div class="board">
         <?php
-            foreach ($contentView['postList'] as &$post) {
+            foreach ($contentView['postList'] as &$item) {
+                $post = $item['post'];
                 require 'Templates/templatePost.php';
+                echo '<div class="comments">';
+                foreach($item['comments'] as &$post)
+                    require 'Templates/templatePost.php';
+                echo '</div>';
             }
         ?>
     </div>

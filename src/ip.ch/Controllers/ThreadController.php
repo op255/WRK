@@ -3,21 +3,33 @@
 namespace App\Controllers;
 
 use App\Repos\PostRepository;
+use App\Models\Post;
 
 class ThreadController extends Controller {
 
-    public function getPostList($page) {
-        $postList = $this->repo->uploadPosts($page);
-        return $postList;
+    protected $id;
+
+    public function getPost() {
+        $post = new Post($this->repo->getPost($this->id));
+        return $post->get();
     }
 
-    public function numPages() {
-        return $this->repo->numPages();
+    public function getCommentsList() {
+        $result = array();
+        $commentsList = $this->repo->uploadComments($this->id);
+
+        foreach ($commentsList as &$comment) {
+            $post = new Post($comment);
+            array_push($result, $post->get());
+        }
+
+        return $result;
     }
 
-    public function __construct() {
+    public function __construct($id) {
         parent::__construct();
         $this->repo = new PostRepository();
+        $this->id = $id;
     }
 }
 

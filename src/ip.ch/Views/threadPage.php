@@ -2,12 +2,12 @@
 
     use App\Controllers\ThreadController;
 
-    $tController = new ThreadController();
+    $tController = new ThreadController($id);
 
     try {
         $tController->generateView(array(
-                                    'post' => $tController->getPost($id),
-                                    'comments' => $tController->getCommentsList($id)
+                                    'post' => $tController->getPost(),
+                                    'comments' => $tController->getCommentsList()
                                     ), 
                                 'templateThreadPage.php');
     }

@@ -20,7 +20,7 @@ spl_autoload_register(function ($class) {
 
 $path = $_SERVER["REQUEST_URI"];
 
-if (substr($path, 7) == "/thread") {
+if ($q = substr($path, 0, 7) == "/thread") {
     $id = (int)substr($path, 7, strlen($path));
     $page = $id ? "threadPage" : "404";
     require "Views/$page.php";

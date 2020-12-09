@@ -11,7 +11,7 @@
     <h1 align="center">
         404. 
         <?php 
-            if($e) echo $contentView->getMessage(); 
+            if(isset($e)) echo $contentView->getMessage(); 
         ?>
     </h1>
     <h2 align="center">

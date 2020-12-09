@@ -14,9 +14,30 @@
             }
 
             $offset = 10 * ($page-1);
-            $stm = $this->pdo->query("SELECT * FROM posts ORDER BY id DESC LIMIT $offset, 10");
+            $stm = $this->pdo->query("SELECT * FROM posts WHERE parent IS NULL ORDER BY id DESC LIMIT $offset, 10");
             $result = $stm->fetchAll();
 
+            return $result;
+        }
+
+        public function uploadComments($id) {
+            $stm = $this->pdo->query("SELECT * FROM posts WHERE parent=$id ORDER BY id");
+            $result = $stm->fetchAll();
+
+            return $result;
+        }
+
+        public function getPost($id) {
+            $stm = $this->pdo->query("SELECT * FROM posts WHERE id=$id");
+            $result = $stm->fetch();
+ 
+            return $result;
+        }
+
+        public function getReplies($id) {
+            $stm = $this->pdo->query("SELECT id, parent FROM posts WHERE reply_to=$id");
+            $result = $stm->fetchAll();
+ 
             return $result;
         }
 
@@ -27,7 +48,7 @@
         public function __construct() {
             parent::__construct();
 
-            $stm = $this->pdo->query("SELECT COUNT(*) FROM posts");
+            $stm = $this->pdo->query("SELECT COUNT(*) FROM posts WHERE parent IS NULL");
             $numPosts = $stm->fetch()['COUNT(*)'];
             $this->MAX_PAGE = intdiv($numPosts, 10) + 1;
         }
