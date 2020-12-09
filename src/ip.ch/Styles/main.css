@@ -34,6 +34,10 @@ body {
     width: 60%;
 }
 
+#reply_to {
+    margin-left: 1em;
+}
+
 img {
     margin: 3px;
     max-width: 160px;
@@ -71,6 +75,12 @@ img {
 .pageButton {
     margin-left: 10px;
     display: inline-block;
+}
+
+.pagesList {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 a {

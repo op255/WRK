@@ -67,7 +67,9 @@
                         'https://upload.wikimedia.org/wikipedia/commons/9/92/Eophrynus_prestvicii_BU669.jpg');
 
     $N = sizeof($images);
-                        // Posts
+
+
+    // Posts
     for ($i = 0; $i < $countPosts; ++$i) {
         if (rand(0,2) == 0) {
             $stmt= $pdo->prepare($sqlPI);
@@ -78,9 +80,12 @@
             $stmt->execute([$lipsum->paragraph()]);
         }
     }
+
+
     // Comments
     for ($i = 0; $i < $countComments; ++$i) {
         $r = rand(1, $countPosts);
+        
         if (rand(0,2) == 0) {
             $stmt= $pdo->prepare($sqlCI);
             $stmt->execute([$lipsum->paragraph(), $images[rand(0,$N-1)], $r, $r]);

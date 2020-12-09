@@ -39,12 +39,14 @@
 
             if ($page != 1)
                 echo '<div class="pageButton"><a href="?page='.($numPages-1).'"> Previous </a></div>';
-            for ($i=1; $i <= $numPages; ++$i) {
+            if ($page-4>1) echo " ...";
+            for ($i=max([1,$page-4]); $i <= min([$numPages, $page+4]); ++$i) {
                 if ($i != $page)
                     echo '<div class="pageButton"><a href="?page='.$i.'">'.$i.'</a></div>';
                 else
                 echo '<div class="pageButton">'.$i.'</div>';
             }
+            if (abs($page+4)<$numPages) echo " ...";
             if ($page != $numPages)
                 echo '<div class="pageButton"><a href="?page='.($page+1).'"> Next </a></div>';
         ?>

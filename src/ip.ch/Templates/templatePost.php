@@ -15,6 +15,12 @@
                     </div>';
         ?>
         </div>
+        <div class="postTopBarElem" id="reply_to">
+            <?php 
+            if (isset($post['reply_to']))
+            echo ">>".$post['reply_to']; 
+            ?>
+        </div>
     </div>
     <div class="postContent">
         <div class="postContentElem" id="img">
@@ -42,17 +48,8 @@
                     echo    '
                                 <a href="/thread'.$rep['parent'].'?reply='.$rep['id'].'">#'.$rep['id'].'</a>
                             ';
-                    //echo "#".$rep['id']." ";
                 }
             }
         ?>
     </div>
 </div>
-<!-- <div class="comments">
-    <div class="reply">
-        Comment1
-    </div>
-    <div class="reply">
-        Comment2
-    </div>
-</div> -->

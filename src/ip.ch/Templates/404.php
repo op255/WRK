@@ -15,7 +15,7 @@
         ?>
     </h1>
     <h2 align="center">
-        <a href="?page=1">Main page</a>
+        <a href="https://ip.ch">Main page</a>
     </h2>
 </body>
     

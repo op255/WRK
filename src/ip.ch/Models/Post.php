@@ -5,26 +5,22 @@
     use App\Repos\PostRepository;
 
     class Post extends Model {
+        
         protected $text_content;
         protected $reply_to;
         protected $img_src;
         protected $parent;
         protected $replies;
 
-        // public function getTextContent() { return $this->textContent; }
-        // public function getReplyTo() { return $this->reply_to; }
-        // public function getImgSrc() { return $this->img_src; }
-        // public function getParent() { return $this->parent; }
-
         public function get() { return array(   'id' => $this->id,
                                                 'text_content' => $this->text_content,
                                                 'reply_to' => $this->reply_to,
                                                 'img_src' => $this->img_src,
                                                 'parent' => $this->parent,
-                                                'replies' => $this->replies ); }
+                                                'replies' => $this->replies ); 
+        }
 
-        function __construct( $post ) 
-        {
+        function __construct( $post ) {
             $this->id = $post['id'];
             $this->text_content = $post['text_content'];
             $this->reply_to = $post['reply_to'];
