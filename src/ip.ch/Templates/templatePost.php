@@ -7,7 +7,7 @@
         <?php
             if (!$post['parent'])
             echo    '<div class="replyButton">
-                        <a href="/thread'.$post['id'].'">Reply</a>
+                        <a href="/thread'.$post['id'].'?reply='.$post['id'].'">Reply</a>
                     </div>';
             else
             echo    '<div class="replyButton">
@@ -36,15 +36,10 @@
         </div>
     </div>
     <div class="postBottomBar">
-        Replies:
         <?php
             if (isset($post['replies'])) {
+                echo "Replies:";
                 foreach ($post['replies'] as &$rep) {
-                    if (!$rep['parent'])
-                    echo    '
-                                <a href="/thread'.$rep['id'].'">#'.$rep['id'].'</a>
-                            ';
-                    else
                     echo    '
                                 <a href="/thread'.$rep['parent'].'?reply='.$rep['id'].'">#'.$rep['id'].'</a>
                             ';
