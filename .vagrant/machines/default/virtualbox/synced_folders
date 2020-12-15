@@ -1,1 +1,0 @@
-{"virtualbox":{"/var/www/ansible-ipch":{"owner":"www-data","group":"vagrant","mount_options":["dmode=775","fmode=775","uid=33","gid=1000"],"guestpath":"/var/www/ansible-ipch","hostpath":"/home/vyakhin/int_prj/src","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/vyakhin/int_prj","disabled":false,"__vagrantfile":true}}}
