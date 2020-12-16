@@ -20,13 +20,13 @@
     <hr>
 
     <div class="thread">
-    <?php   $post = $content['post'];
+    <?php   $post = $thread;
             require $postTemplate;
     ?>
     </div>
 
     <div class="comments">
-    <?php foreach($content['comments'] as &$post):
+    <?php foreach($comments as &$post):
             require $postTemplate;
     endforeach; ?>
     </div>

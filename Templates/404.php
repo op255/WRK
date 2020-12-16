@@ -9,9 +9,8 @@
     </div>
     <hr>
     <h1 align="center">
-        404. 
+        404 
         <?php if(isset($e)) :
-            echo $e->getCode(); 
             echo $e->getMessage(); 
         endif; ?>
     </h1>
