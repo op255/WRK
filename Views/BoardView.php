@@ -10,10 +10,13 @@
         public function generate($page){
             try {
                 $content = array(   
-                    'postList' => $this->controller->getPostList($page),
+                    'postList' => array(    'post' => $this->controller->getPostList($page),
+                                            'comments' => $this->controller->getLatestComments($page)),
                     'numPages' => $this->controller->numPages(),
                     'currentPage' => $page
                                 );
+                
+                    
                 $postTemplate = 'Templates/PostTemplate.php'; 
                 require 'Templates/BoardTemplate.php';  
             }
