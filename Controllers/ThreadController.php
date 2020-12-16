@@ -7,16 +7,14 @@ use App\Models\Post;
 
 class ThreadController extends Controller {
 
-    protected $id;
-
-    public function getPost() {
-        $post = new Post($this->repo->getPost($this->id));
+    public function getPost($id) {
+        $post = new Post($this->repo->getPost($id));
         return $post->get();
     }
 
-    public function getCommentsList() {
+    public function getCommentsList($id) {
         $result = array();
-        $commentsList = $this->repo->uploadComments($this->id);
+        $commentsList = $this->repo->uploadComments($id);
 
         foreach ($commentsList as &$comment) {
             $post = new Post($comment);
@@ -26,10 +24,9 @@ class ThreadController extends Controller {
         return $result;
     }
 
-    public function __construct($id) {
+    public function __construct() {
         parent::__construct();
         $this->repo = new PostRepository();
-        $this->id = $id;
     }
 }
 

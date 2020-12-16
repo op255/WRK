@@ -9,8 +9,12 @@
 
         public function getPostList($page) {
             $result = array();
-            $postList = $this->repo->uploadPosts($page);
-
+            try {
+                $postList = $this->repo->uploadPosts($page);
+            }
+            catch (Exception $e) {
+                throw new Exception("Failed to upload post list: ".$e->getMessage());
+            }
             foreach ($postList as &$post) {
                 $tmp = new Post($post);
 

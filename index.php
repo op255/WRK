@@ -2,11 +2,11 @@
 
 require __DIR__.'/Core/Autoload.php';
 
-use App\Rote\Router;
+use App\Route\Router;
 
 
 
 $router = new Router();
-$router->get($_SERVER["REQUEST_URI"]);
+$router->get($_SERVER["REQUEST_URI"], $_GET);
 
 ?>

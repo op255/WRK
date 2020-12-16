@@ -10,9 +10,10 @@
     <hr>
     <h1 align="center">
         404. 
-        <?php 
-            if(isset($e)) echo $contentView->getMessage(); 
-        ?>
+        <?php if(isset($e)) :
+            echo $e->getCode(); 
+            echo $e->getMessage(); 
+        endif; ?>
     </h1>
     <h2 align="center">
         <a href="https://ip.ch">Main page</a>

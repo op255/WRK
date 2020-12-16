@@ -9,9 +9,8 @@
         protected $MAX_PAGE;
 
         public function uploadPosts($page) {
-            if (($page > $this->MAX_PAGE) or ($page < 1)) {
+            if (($page > $this->MAX_PAGE) or ($page < 1))
                 throw new Exception("Page not found(");
-            }
 
             $offset = 10 * ($page-1);
             $stm = $this->pdo->query("SELECT * FROM posts WHERE parent IS NULL ORDER BY id DESC LIMIT $offset, 10");
