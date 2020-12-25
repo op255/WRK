@@ -22,8 +22,8 @@
             }
         }
 
-        public function __construct() {
-            $this->controller = new ThreadController();
+        public function __construct($conn) {
+            $this->controller = new ThreadController($conn);
         }
     }
     

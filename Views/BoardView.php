@@ -35,8 +35,8 @@
             }
         }
 
-        public function __construct() {
-            $this->controller = new PostController();
+        public function __construct($conn) {
+            $this->controller = new PostController($conn);
         }
     }
 ?>

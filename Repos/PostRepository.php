@@ -54,8 +54,8 @@
             return $this->MAX_PAGE;
         }
 
-        public function __construct() {
-            parent::__construct();
+        public function __construct($conn) {
+            parent::__construct($conn);
 
             $stm = $this->pdo->query("SELECT COUNT(*) FROM posts WHERE parent IS NULL");
             $numPosts = $stm->fetch()['COUNT(*)'];

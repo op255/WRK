@@ -31,9 +31,9 @@
             return $this->repo->numPages();
         }
 
-        public function __construct() {
+        public function __construct($conn) {
             parent::__construct();
-            $this->repo = new PostRepository();
+            $this->repo = new PostRepository($conn);
         }
     }
 ?>
