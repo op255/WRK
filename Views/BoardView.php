@@ -9,9 +9,19 @@
 
         public function generate($page){
             try {
+                $postList = $this->controller->getPostList($page);
+                $boardContent = array();
+                foreach($postList as &$post) {
+                    $comments = $this->controller->getLatestComments($post->getId());
+                    foreach($comments as &$comment)
+                        $comment = $comment->getContent();
+                    array_push($boardContent, array(   
+                        'post' => $post->getContent(), 
+                        'comments' => $comments
+                    ));
+                }
                 $content = array(   
-                    'postList' => array(    'post' => $this->controller->getPostList($page),
-                                            'comments' => $this->controller->getLatestComments($page)),
+                    'postList' => $boardContent,
                     'numPages' => $this->controller->numPages(),
                     'currentPage' => $page
                                 );

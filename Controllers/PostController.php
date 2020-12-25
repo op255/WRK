@@ -29,9 +29,7 @@
                 if (isset($comments[$N-1]))
                     array_push($twoLastComments, $comments[$N-1]);
 
-            array_push($result, $twoLastComments);
-
-            return $result;
+            return $twoLastComments;
         }
 
         public function numPages() {
