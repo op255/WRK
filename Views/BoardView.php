@@ -30,13 +30,13 @@
                 $postTemplate = 'Templates/PostTemplate.php'; 
                 require 'Templates/BoardTemplate.php';  
             }
-            catch (Exception $e) {
+            catch (\Exception $e) {
                 ErrorView::generate($e);
             }
         }
 
-        public function __construct() {
-            $this->controller = new PostController();
+        public function __construct($conn) {
+            $this->controller = new PostController($conn);
         }
     }
 ?>

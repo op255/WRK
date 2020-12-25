@@ -17,13 +17,13 @@
 
                 require 'Templates/ThreadTemplate.php';
             }
-            catch (Exception $e) {
+            catch (\Exception $e) {
                 ErrorView::generate($e);
             }
         }
 
-        public function __construct() {
-            $this->controller = new ThreadController();
+        public function __construct($conn) {
+            $this->controller = new ThreadController($conn);
         }
     }
     
