@@ -8,13 +8,19 @@
     class PostController extends Controller {
 
         public function getPostList($page) {
-            $result = array();
-            $postList = $this->repo->uploadPosts($page);
+            try {
+                $postList = $this->repo->uploadPosts($page);
+            }
+            catch (Exception $e) {
+                throw new Exception("Failed to upload post list: ".$e->getMessage());
+            }
 
-            foreach ($postList as &$post) {
-                $tmp = new Post($post);
+            return $postList;
+        }
 
-                $comments =$this->repo->uploadComments($tmp->getId());
+        public function getLatestComments ($id) {
+
+                $comments =$this->repo->uploadComments($id);
                 $twoLastComments = array();
                 $N = sizeof($comments);
 
@@ -23,11 +29,7 @@
                 if (isset($comments[$N-1]))
                     array_push($twoLastComments, $comments[$N-1]);
 
-                array_push($result, array(  'post' => $tmp->get(),
-                                            'comments' => $twoLastComments));
-            }
-
-            return $result;
+            return $twoLastComments;
         }
 
         public function numPages() {

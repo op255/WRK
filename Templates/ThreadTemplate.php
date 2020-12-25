@@ -20,17 +20,15 @@
     <hr>
 
     <div class="thread">
-    <?php
-        $post = $contentView['post'];
-        require 'Templates/templatePost.php';
+    <?php   $post = $thread;
+            require $postTemplate;
     ?>
     </div>
 
     <div class="comments">
-    <?php
-        foreach($contentView['comments'] as &$post)
-            require 'Templates/templatePost.php';
-    ?>
+    <?php foreach($comments as &$post):
+            require $postTemplate;
+    endforeach; ?>
     </div>
 
 </body>

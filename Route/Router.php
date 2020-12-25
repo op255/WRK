@@ -1,16 +1,26 @@
 <?php
 
-namespace App\Route
+namespace App\Route;
+
+use App\Views\BoardView;
+use App\Views\ThreadView;
 
 class Router {
-    public function get($uri) {
-        if ($q = substr($uri, 0, 7) == "/thread") {
+    public function get($uri, $getParam) {
+        extract($getParam, EXTR_SKIP);
+
+        if (substr($uri, 0, 7) == "/thread") {
             $id = (int)substr($uri, 7, strlen($uri));
-            $page = $id ? "threadPage" : "404";
-            require "Views/$page.php";
+            $view = new ThreadView();
+            $content = $id;
         }
-        else
-            require 'Views/mainPage.php';
+        else {
+            $page = isset($page) ? $page : 1;
+            $view = new BoardView();
+            $content = $page;
+        } 
+        
+        $view->generate($content);
     }
 }
 
