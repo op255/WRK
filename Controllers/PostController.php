@@ -8,12 +8,7 @@
     class PostController extends Controller {
 
         public function getPostList($page) {
-            try {
-                $postList = $this->repo->uploadPosts($page);
-            }
-            catch (Exception $e) {
-                throw new Exception("Failed to upload post list: ".$e->getMessage());
-            }
+            $postList = $this->repo->uploadPosts($page);
 
             return $postList;
         }

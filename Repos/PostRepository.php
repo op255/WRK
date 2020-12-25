@@ -2,7 +2,7 @@
 
     namespace App\Repos;
 
-    use Exception;
+    use \Exception;
     use App\Models\Post;
 
     class PostRepository extends Repository {
@@ -20,7 +20,7 @@
 
         public function uploadPosts($page) {
             if (($page > $this->MAX_PAGE) or ($page < 1))
-                throw new Exception("Page not found(");
+                throw new \Exception("Page not found(");
 
             $offset = 10 * ($page-1);
             $stm = $this->pdo->query("SELECT * FROM posts WHERE parent IS NULL ORDER BY id DESC LIMIT $offset, 10");
@@ -43,6 +43,8 @@
         public function uploadPost($id) {
             $stm = $this->pdo->query("SELECT * FROM posts WHERE id=$id");
             $post = $stm->fetch();
+            if (!$post)
+                throw new \Exception("There is no such thread(");
             $result = new Post($post, $this->getReplies($post['id']));
 
             return $result;

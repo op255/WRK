@@ -30,7 +30,7 @@
                 $postTemplate = 'Templates/PostTemplate.php'; 
                 require 'Templates/BoardTemplate.php';  
             }
-            catch (Exception $e) {
+            catch (\Exception $e) {
                 ErrorView::generate($e);
             }
         }

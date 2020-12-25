@@ -17,7 +17,7 @@
 
                 require 'Templates/ThreadTemplate.php';
             }
-            catch (Exception $e) {
+            catch (\Exception $e) {
                 ErrorView::generate($e);
             }
         }
