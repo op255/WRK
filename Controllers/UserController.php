@@ -17,7 +17,6 @@ class UserController extends Controller {
 
 
     public function __construct($conn) {
-        parent::__construct();
         $this->repo = new UserRepository($conn);
     }
 }

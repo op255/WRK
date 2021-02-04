@@ -3,10 +3,12 @@
 namespace App\Route;
 
 use App\Core\DBConnection;
+
 use App\Views\BoardView;
 use App\Views\ThreadView;
 use App\Views\SignupView;
 use App\Views\LoginView;
+use App\Views\ErrorView;
 
 
 class Router {
@@ -17,7 +19,7 @@ class Router {
             $connection = new DBConnection();
         }
         catch (\Exception $e) {
-            App\Views\ErrorView::generate($e);
+            ErrorView::generate($e);
             die();
         }
 
@@ -39,11 +41,16 @@ class Router {
             unset($_SESSION['username']);
             header("Location: https://ip.ch");
         }
-        else {
+        elseif (substr($uri, 0, 2) == "/?" or $uri == "/") {
             $page = isset($page) ? $page : 1;
             $view = new BoardView($connection);
             $content = $page;
         } 
+        else {
+            $e = new \Exception("No such page");
+            ErrorView::generate($e);
+            die();
+        }
         
         $view->generate($content);
     }

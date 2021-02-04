@@ -23,8 +23,6 @@
             else {
                 $username = "";
                 $email = "";
-                $password1 = "";
-                $password2 = "";
                 require 'Templates/SignupTemplate.php';
             }
         }

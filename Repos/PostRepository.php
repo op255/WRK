@@ -12,8 +12,7 @@
         public function getReplies($id) {
             $stm = $this->pdo->query("SELECT * FROM posts WHERE reply_to=$id");
             $result = $stm->fetchAll();
-            for ($i = 0; $i < sizeof($result); ++$i)
-                $result[$i] = new Post($result[$i], $this->getReplies($result[$i]['id']));
+            foreach ($result as &$res) $res = new Post($res, $this->getReplies($res['id']));
  
             return $result;
         }
@@ -25,8 +24,7 @@
             $offset = 10 * ($page-1);
             $stm = $this->pdo->query("SELECT * FROM posts WHERE parent IS NULL ORDER BY id DESC LIMIT $offset, 10");
             $result = $stm->fetchAll();
-            for ($i = 0; $i < sizeof($result); ++$i)
-                $result[$i] = new Post($result[$i], $this->getReplies($result[$i]['id']));
+            foreach ($result as &$res) $res = new Post($res, $this->getReplies($res['id']));
 
             return $result;
         }
@@ -34,8 +32,7 @@
         public function uploadComments($id) {
             $stm = $this->pdo->query("SELECT * FROM posts WHERE parent=$id ORDER BY id");
             $result = $stm->fetchAll();
-            for ($i = 0; $i < sizeof($result); ++$i)
-                $result[$i] = new Post($result[$i], $this->getReplies($result[$i]['id']));
+            foreach ($result as &$res) $res = new Post($res, $this->getReplies($res['id']));
 
             return $result;
         }

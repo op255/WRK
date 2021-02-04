@@ -32,7 +32,6 @@
         }
 
         public function __construct($conn) {
-            parent::__construct();
             $this->repo = new PostRepository($conn);
         }
     }

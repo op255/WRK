@@ -22,7 +22,6 @@
             else {
                 $username = "";
                 $email = "";
-                $password = "";
                 require 'Templates/LoginTemplate.php';
             }
         }

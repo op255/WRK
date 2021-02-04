@@ -15,17 +15,15 @@
                     $comments = $this->controller->getLatestComments($post->getId());
                     foreach($comments as &$comment)
                         $comment = $comment->getContent();
-                    array_push($boardContent, array(   
-                        'post' => $post->getContent(), 
-                        'comments' => $comments
-                    ));
+                        array_push($boardContent, array(   
+                            'post' => $post->getContent(), 
+                            'comments' => $comments
+                        ));
                 }
                 $content = array(   
                     'postList' => $boardContent,
                     'numPages' => $this->controller->numPages(),
-                    'currentPage' => $page
-                                );
-                
+                    'currentPage' => $page);
                     
                 $postTemplate = 'Templates/PostTemplate.php'; 
                 require 'Templates/BoardTemplate.php';  
