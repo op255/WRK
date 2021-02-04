@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require __DIR__.'/Core/Autoload.php';
 
 use App\Route\Router;

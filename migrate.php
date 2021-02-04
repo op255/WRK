@@ -38,13 +38,19 @@
                 FLUSH PRIVILEGES;");
     $pdo->exec("use PostDB");
 
-    $colums = "id INT AUTO_INCREMENT PRIMARY KEY, 
+    $postsColumns = "id INT AUTO_INCREMENT PRIMARY KEY, 
                 text_content TEXT NOT NULL, 
                 img_src VARCHAR( 512 ),
                 reply_to INT,
                 parent INT" ;
 
-    $pdo->exec("CREATE TABLE IF NOT EXISTS PostDB.posts ($colums)");
+    $usersColumns = "id INT AUTO_INCREMENT PRIMARY KEY,
+                    username VARCHAR( 128 ) NOT NULL,
+                    email VARCHAR( 128 ) NOT NULL,
+                    password VARCHAR( 128 ) NOT NULL";
+
+    $pdo->exec("CREATE TABLE IF NOT EXISTS PostDB.posts ($postsColumns)");
+    $pdo->exec("CREATE TABLE IF NOT EXISTS PostDB.users ($usersColumns)");
 
     $sqlP = "INSERT INTO posts (text_content) VALUES (?)";
     $sqlPI = "INSERT INTO posts (text_content, img_src) VALUES (?, ?)";

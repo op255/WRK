@@ -6,15 +6,30 @@
 </head>
 
 <body>
-    <div class="topMenu">
+<div class="topMenu">
         <a href="https://ip.ch">
         <div class="topMenuElem">
            <h1>IPch</h1>
             <h2>Welcome back. Again.</h2>
         </div>
         </a>
-        <div class="topMenuElem"></div>
-        <div class="topMenuElem" id="login"></div>
+        <?php if(!isset($_SESSION['username'])):?>
+        <div class="topMenuElem" id="signup">
+        <a href="https://ip.ch/signup">SignUp</a>
+        </div>
+        <div class="topMenuElem" id="login">
+        <a href="https://ip.ch/login">Login</a>
+        </div>
+        <?php else:?>
+        <div class="topMenuElem">
+        <?php 
+            echo "Hello, ".$_SESSION['username']."!"; 
+        ?>
+        </div>
+        <div class="topMenuElem" id="logout">
+        <a href="https://ip.ch/logout">Logout</a>
+        </div>
+        <?php endif;?>
     </div>
 
     <hr>
