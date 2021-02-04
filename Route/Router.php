@@ -33,6 +33,10 @@ class Router {
             $view = new SignupView($connection);
         }
         elseif (substr($uri, 0, 6) == "/login"){
+            if (isset($_SESSION['username'])) {
+                header("Location: https://ip.ch");
+                die();
+            }
             $content = $_POST;
             $view = new LoginView($connection);
         }

@@ -12,6 +12,7 @@
                 try {
                     $user = $this->controller->auth($username, $email, $password);
                     $_SESSION['username'] = $user->getUsername();
+                    $_SESSION['role'] = $user->getRole();
                     header("Location: https://ip.ch");
                     die();
                 }
