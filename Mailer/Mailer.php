@@ -23,8 +23,7 @@ class Mailer{
             $mail->Host = "smtp.gmail.com";
             $mail->Port = '587';
             $mail->AddAddress($mailid);
-            $mail->Username ="ipch.service@gmail.com";
-            $mail->Password ="90fef89bb091be";
+
             $mail->SetFrom('ipch.service@gmail.com','IPch Service');
             $mail->Subject = $subject;
             $mail->Body = $message;
