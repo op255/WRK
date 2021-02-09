@@ -11,7 +11,8 @@
                 extract($content, EXTR_SKIP);
                 try {
                     $this->controller->reg($username, $email, $password1, $password2);
-                    $user = $this->controller->auth($username, $email, $password1);
+                    $this->controller->sendConfirmationMail($email);
+                    $user = $this->controller->auth($username, $password1);
                     $_SESSION['username'] = $user->getUsername(); 
                     header("Location: https://ip.ch");
                     die();

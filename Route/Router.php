@@ -40,6 +40,14 @@ class Router {
             $content = $_POST;
             $view = new LoginView($connection);
         }
+        elseif (substr($uri, 0, 8) == "/confirm"){
+            if (isset($_SESSION['username'])) {
+                header("Location: https://ip.ch");
+                die();
+            }
+            $content = $_POST;
+            $view = new LoginView($connection);
+        }
         elseif (substr($uri, 0, 7) == "/logout"){
             session_destroy();
             unset($_SESSION['username']);

@@ -10,7 +10,7 @@
             if (isset($_POST['auth_user'])) {
                 extract($content, EXTR_SKIP);
                 try {
-                    $user = $this->controller->auth($username, $email, $password);
+                    $user = $this->controller->auth($username, $password);
                     $_SESSION['username'] = $user->getUsername();
                     $_SESSION['role'] = $user->getRole();
                     header("Location: https://ip.ch");
@@ -22,7 +22,6 @@
             }
             else {
                 $username = "";
-                $email = "";
                 require 'Templates/LoginTemplate.php';
             }
         }
