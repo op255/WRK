@@ -24,7 +24,7 @@ class Mailer{
             $mail->Port = '587';
             $mail->AddAddress($email);
             $mail->Username = "ipch.service@gmail.com";
-            $mail->Password = "90fef89bb091be";
+            $mail->Password = "";
             $mail->SetFrom('ipch.service@gmail.com','IPch Service');
             $mail->Subject = $subject;
             $mail->Body = $message;
