@@ -9,6 +9,7 @@ use App\Views\ThreadView;
 use App\Views\SignupView;
 use App\Views\LoginView;
 use App\Views\ErrorView;
+use App\Views\ConfirmationView;
 
 
 class Router {
@@ -41,16 +42,12 @@ class Router {
             $view = new LoginView($connection);
         }
         elseif (substr($uri, 0, 8) == "/confirm"){
-            if (isset($_SESSION['username'])) {
-                header("Location: https://ip.ch");
-                die();
-            }
-            $content = $_POST;
-            $view = new LoginView($connection);
+            $content = substr($uri, 8, strlen($uri));
+            $view = new ConfirmationView($connection);
         }
         elseif (substr($uri, 0, 7) == "/logout"){
             session_destroy();
-            unset($_SESSION['username']);
+            unset($_SESSION);
             header("Location: https://ip.ch");
         }
         elseif (substr($uri, 0, 2) == "/?" or $uri == "/") {

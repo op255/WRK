@@ -10,12 +10,8 @@
             if (isset($_POST['reg_user'])) {
                 extract($content, EXTR_SKIP);
                 try {
-                    $this->controller->reg($username, $email, $password1, $password2);
-                    $this->controller->sendConfirmationMail($email);
-                    $user = $this->controller->auth($username, $password1);
-                    $_SESSION['username'] = $user->getUsername(); 
-                    header("Location: https://ip.ch");
-                    die();
+                    $_SESSION['token'] = $this->controller->reg($username, $email, $password1, $password2);
+                    require 'Templates/ConfirmEmail.php';
                 }
                 catch (\Exception $e) {
                     require 'Templates/SignupTemplate.php';
