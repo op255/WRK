@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="topMenu">
-		<a href="https://ip.ch">
+		<a href="/">
         <div class="topMenuElem">
            <h1>IPch</h1>
             <h2>Welcome back. Again.</h2>
@@ -46,7 +46,7 @@
   	  <button type="submit" class="btn" name="reg_user">Register</button>
   	</div>
   	<p>
-  		Already a member? <a href="https://ip.ch/login">Sign in</a>
+  		Already a member? <a href="/login">Sign in</a>
   	</p>
   </form>
 </body>

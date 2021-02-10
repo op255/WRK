@@ -35,7 +35,7 @@ class Router {
         }
         elseif (substr($uri, 0, 6) == "/login"){
             if (isset($_SESSION['username'])) {
-                header("Location: https://ip.ch");
+                header("Location: /");
                 die();
             }
             $content = $_POST;
@@ -48,7 +48,7 @@ class Router {
         elseif (substr($uri, 0, 7) == "/logout"){
             session_destroy();
             unset($_SESSION);
-            header("Location: https://ip.ch");
+            header("Location: /");
         }
         elseif (substr($uri, 0, 2) == "/?" or $uri == "/") {
             $page = isset($page) ? $page : 1;

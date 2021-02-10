@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div class="topMenu">
-		<a href="https://ip.ch">
+		<a href="/">
         <div class="topMenuElem">
            <h1>IPch</h1>
             <h2>Welcome back. Again.</h2>

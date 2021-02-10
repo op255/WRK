@@ -7,7 +7,7 @@
 
 <body>
 <div class="topMenu">
-        <a href="https://ip.ch">
+        <a href="/">
         <div class="topMenuElem">
            <h1>IPch</h1>
             <h2>Welcome back. Again.</h2>
@@ -15,17 +15,17 @@
         </a>
         <?php if(!isset($_SESSION['username'])):?>
         <div class="topMenuElem" id="signup">
-            <a href="https://ip.ch/signup">SignUp</a>
+            <a href="/signup">SignUp</a>
         </div>
         <div class="topMenuElem" id="login">
-            <a href="https://ip.ch/login">Login</a>
+            <a href="/login">Login</a>
         </div>
         <?php else:?>
         <div class="topMenuElem">
             <?php echo "Hello, ".$_SESSION['username']."!"; ?>
         </div>
         <div class="topMenuElem" id="logout">
-            <a href="https://ip.ch/logout">Logout</a>
+            <a href="/logout">Logout</a>
         </div>
         <?php endif;?>
     </div>

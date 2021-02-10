@@ -13,7 +13,7 @@
                     $user = $this->controller->auth($username, $password);
                     $_SESSION['username'] = $user->getUsername();
                     $_SESSION['role'] = $user->getRole();
-                    header("Location: https://ip.ch");
+                    header("Location: /");
                     die();
                 }
                 catch (\Exception $e) {
