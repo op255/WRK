@@ -4,8 +4,7 @@
 
     class Repository {
 
-        protected $pdo;
-    
+        protected $pdo; 
 
         public function __construct($conn) {
             $this->pdo = $conn->getPDO();

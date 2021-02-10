@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Repos\UserRepository;
-use App\Models\User;
+
 
 class UserController extends Controller {
 

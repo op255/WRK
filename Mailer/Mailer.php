@@ -9,10 +9,11 @@ use App\Mailer\PHPMailer;
 class Mailer{
 
     public function sendConfirmationMail($email, $token) {
+        require 'Config/MailerConfig.php';
         $mail = new PHPMailer(true);
 
         $subject = "Account confirmation";
-        $message = "Open the link bellow to confirm your account: https://ip.ch/confirm$token";
+        $message = "Open the link to confirm your account: https://ip.ch/confirm$token";
 
         try {
             $mail->IsSMTP();
@@ -23,9 +24,9 @@ class Mailer{
             $mail->Host = "smtp.gmail.com";
             $mail->Port = '587';
             $mail->AddAddress($email);
-            $mail->Username = "ipch.service@gmail.com";
-            $mail->Password = "";
-            $mail->SetFrom('ipch.service@gmail.com','IPch Service');
+            $mail->Username = $username;
+            $mail->Password = $password;
+            $mail->SetFrom($username,'IPch Service');
             $mail->Subject = $subject;
             $mail->Body = $message;
             $mail->AltBody = $message;

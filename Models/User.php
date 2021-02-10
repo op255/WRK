@@ -7,7 +7,7 @@
         protected $username;
         protected $email;
         protected $password;
-        protected $role;
+        protected $token;
 
         public function getUsername() { return $this->username; }
 
@@ -18,7 +18,7 @@
             $this->username = $user['username'];
             $this->email = $user['email'];
             $this->password = $user['password'];
-            $this->role = $user['role'];
+            $this->role = $user['token'];
         }
     }
 ?>

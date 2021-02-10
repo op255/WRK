@@ -19,13 +19,6 @@
             echo ">>".$post['reply_to']; 
             ?>
         </div>
-        <?php if(isset($_SESSION['role']) ? $_SESSION['role'] : false):?>
-        <div class="postTopBarElem" id="delete">
-        <form method="post" action="login">
-            <button type="submit" name="delete" value=<?php echo $post['id'];?>>delete</button>
-        </form>
-        </div>
-        <?php endif;?>
     </div>
     <div class="postContent">
         <div class="postContentElem" id="img">

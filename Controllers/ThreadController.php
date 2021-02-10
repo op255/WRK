@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Repos\PostRepository;
-use App\Models\Post;
+
 
 class ThreadController extends Controller {
 

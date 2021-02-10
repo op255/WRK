@@ -1,36 +1,14 @@
 <?php
 
-    spl_autoload_register(function ($class) {
-
-        $prefix = 'App\\';
-    
-        $len = strlen($prefix);
-        if (strncmp($prefix, $class, $len) !== 0) {
-            return;
-        }
-    
-        $relative_class = substr($class, $len);
-    
-        $file = str_replace('\\', '/', $relative_class) . '.php';
-    
-        if (file_exists($file)) {
-            require_once $file;
-        }
-    });
+    require __DIR__.'/Core/Autoload.php';
 
     use App\Dev\LoremIpsum;
+    use App\Core\DBConnection;
 
     $lipsum = new LoremIpsum();
+    $conn = new DBConnection();
 
-
-    $options = [
-        \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
-        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-        \PDO::ATTR_EMULATE_PREPARES   => false,
-    ];
-
-    $dsn = "mysql:host=localhost;charset=utf8;port=3036";
-    $pdo = new \PDO($dsn, 'root', 'root', $options);
+    $pdo = $conn->getPDO();
 
     $pdo->exec("CREATE DATABASE IF NOT EXISTS `PostDB`;
                 CREATE USER 'root'@'localhost' IDENTIFIED BY 'root';
@@ -47,7 +25,9 @@
     $usersColumns = "id INT AUTO_INCREMENT PRIMARY KEY,
                     username VARCHAR( 128 ) NOT NULL,
                     email VARCHAR( 128 ) NOT NULL,
-                    password VARCHAR( 128 ) NOT NULL";
+                    password VARCHAR( 128 ) NOT NULL,
+                    status VARCHAR( 16 ),
+                    token VARCHAR( 128 )";
 
     $pdo->exec("CREATE TABLE IF NOT EXISTS PostDB.posts ($postsColumns)");
     $pdo->exec("CREATE TABLE IF NOT EXISTS PostDB.users ($usersColumns)");
