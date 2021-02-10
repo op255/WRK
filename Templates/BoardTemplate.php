@@ -13,10 +13,10 @@
         </div>
         <?php if(!isset($_SESSION['username'])):?>
         <div class="topMenuElem" id="signup">
-        <a href="https://ip.ch/signup">SignUp</a>
+        <a href="/signup">SignUp</a>
         </div>
         <div class="topMenuElem" id="login">
-        <a href="https://ip.ch/login">Login</a>
+        <a href="/login">Login</a>
         </div>
         <?php else:?>
         <div class="topMenuElem">
@@ -25,7 +25,7 @@
         ?>
         </div>
         <div class="topMenuElem" id="logout">
-        <a href="https://ip.ch/logout">Logout</a>
+        <a href="/logout">Logout</a>
         </div>
         <?php endif;?>
     </div>

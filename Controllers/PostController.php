@@ -3,7 +3,7 @@
     namespace App\Controllers;
 
     use App\Repos\PostRepository;
-    use App\Models\Post;
+
 
     class PostController extends Controller {
 
@@ -14,7 +14,6 @@
         }
 
         public function getLatestComments ($id) {
-
                 $comments =$this->repo->uploadComments($id);
                 $twoLastComments = array();
                 $N = sizeof($comments);
@@ -32,7 +31,6 @@
         }
 
         public function __construct($conn) {
-            parent::__construct();
             $this->repo = new PostRepository($conn);
         }
     }

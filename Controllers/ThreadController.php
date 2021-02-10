@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Repos\PostRepository;
-use App\Models\Post;
+
 
 class ThreadController extends Controller {
 
@@ -16,7 +16,6 @@ class ThreadController extends Controller {
     }
 
     public function __construct($conn) {
-        parent::__construct();
         $this->repo = new PostRepository($conn);
     }
 }

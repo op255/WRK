@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Repos\UserRepository;
-use App\Models\User;
+
 
 class UserController extends Controller {
 
@@ -11,13 +11,16 @@ class UserController extends Controller {
         return $this->repo->reg($username, $email, $password1, $password2);
     }
 
-    public function auth($username, $email, $password) {
-        return $this->repo->auth($username, $email, $password);
+    public function auth($username, $password) {
+        return $this->repo->auth($username, $password);
+    }
+
+    public function checkConfirmation($token) {
+        $this->repo->checkConfirmation($token);
     }
 
 
     public function __construct($conn) {
-        parent::__construct();
         $this->repo = new UserRepository($conn);
     }
 }

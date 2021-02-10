@@ -15,7 +15,7 @@
         endif; ?>
     </h1>
     <h2 align="center">
-        <a href="https://ip.ch">Main page</a>
+        <a href="/">Main page</a>
     </h2>
 </body>
     

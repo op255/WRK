@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div class="topMenu">
-		<a href="https://ip.ch">
+		<a href="/">
         <div class="topMenuElem">
            <h1>IPch</h1>
             <h2>Welcome back. Again.</h2>
@@ -27,12 +27,8 @@
         </div>
     <?php endif; ?>
   	<div class="input-group">
-  	  <label>Username</label>
+  	  <label>Username or email</label>
   	  <input type="text" name="username" value="<?php echo $username; ?>">
-  	</div>
-  	<div class="input-group">
-  	  <label>Email</label>
-  	  <input type="email" name="email" value="<?php echo $email; ?>">
   	</div>
   	<div class="input-group">
   	  <label>Password</label>
@@ -42,7 +38,7 @@
   	  <button type="submit" class="btn" name="auth_user">Login</button>
   	</div>
   	<p>
-  		Do not have an account yet? <a href="https://ip.ch/signup">Sign up</a>
+  		Do not have an account yet? <a href="/signup">Sign up</a>
   	</p>
   </form>
 </body>

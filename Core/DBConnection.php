@@ -3,12 +3,12 @@
     namespace App\Core;
 
     class DBConnection {
-        protected $name = 'PostDB';
-        protected $host = 'localhost';
-        protected $port = '3036';
-        protected $user = 'root';
-        protected $pass = 'root';
-        protected $charset = 'utf8';
+        protected $name;
+        protected $host;
+        protected $port;
+        protected $user;
+        protected $pass;
+        protected $charset;
         protected $pdo;
     
 
@@ -17,6 +17,15 @@
         }
 
         public function __construct() {
+            require 'Config/DBConfig.php';
+
+            $this->name = $name;
+            $this->host = $host;
+            $this->port = $port;
+            $this->user = $user;
+            $this->pass = $pass;
+            $this->charset = $charset;
+
             $options = [
                 \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
