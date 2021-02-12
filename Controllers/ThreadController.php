@@ -7,6 +7,14 @@ use App\Repos\PostRepository;
 
 class ThreadController extends Controller {
 
+    public function addComment($textContent, $reply, $parent, $image) {
+        $this->repo->addComment($textContent, (int)$reply, $parent, $image);
+    }
+
+    public function uploadImage($image){
+        return $this->repo->uploadImage($image);
+    } 
+
     public function getPost($id) {
         return $this->repo->uploadPost($id);
     }

@@ -44,6 +44,23 @@
     endforeach; ?>
     </div>
 
+    
+    <?php if(isset($_SESSION['token'])): ?>
+        <div class="input-group">
+        <form method="post" class="textfield" enctype="multipart/form-data">
+            <div>
+            <?php if(isset($reply)): echo "Reply to: >>$reply"; endif; ?>
+            </div>
+            <div>
+            <textarea type="text" name="commentText" class="commentTextfield" maxlength=65534></textarea>
+            </div>
+            <button type="submit" class="btn" value="addComent">Post</button>
+            <input type="file" name="image" accept="image/*">
+            </div>
+        </form>
+        </div>
+    <?php endif; ?>
+
 </body>
 
 </HTML>

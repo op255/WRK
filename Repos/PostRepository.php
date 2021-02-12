@@ -54,6 +54,20 @@
             return $this->MAX_PAGE;
         }
 
+        public function addComment($textContent, $reply, $parent, $image) {
+            $sql = "INSERT INTO posts (text_content, reply_to, parent, img_src) VALUES (?, ?, ?, ?)";
+            $stm = $this->pdo->prepare($sql);
+            $stm->execute([$textContent, $reply, $parent, $image]);
+        }
+
+        public function uploadImage($image){
+            $file = "images/".basename($image["name"]);
+            $ext = strtolower(pathinfo($file,PATHINFO_EXTENSION));
+            $filename = "images/".basename($image["tmp_name"]).".$ext";
+            move_uploaded_file($image["tmp_name"], $filename);
+            return $filename;
+        }
+
         public function __construct($conn) {
             parent::__construct($conn);
 

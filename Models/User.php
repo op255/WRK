@@ -11,14 +11,14 @@
 
         public function getUsername() { return $this->username; }
 
-        public function getRole() { return $this->role; }
+        public function getToken() { return $this->token; }
 
         function __construct($user) {
             $this->id = $user['id'];
             $this->username = $user['username'];
             $this->email = $user['email'];
             $this->password = $user['password'];
-            $this->role = $user['token'];
+            $this->token = $user['token'];
         }
     }
 ?>

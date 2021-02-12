@@ -23,6 +23,8 @@
             else {
                 throw new \Exception("Wrong password");
             }
+            $_SESSION['username'] = $user->getUsername();
+            $_SESSION['token'] = $user->getToken();
 
             return $user;
         }
