@@ -12,7 +12,7 @@
         }
 
         public function getLatestComments ($id) {
-            return $this->repo->getLatestComments();
+            return $this->repo->getLatestComments($id);
         }
 
         public function numPages() {

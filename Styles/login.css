@@ -3,8 +3,10 @@
     padding: 0px;
   }
   body {
-    font-size: 120%;
-    background: antiquewhite;
+    display: block;
+    margin: 8px;
+    background-color: antiquewhite;
+    font-size: 110%;
   }
   
   .header {
@@ -15,7 +17,6 @@
     text-align: center;
     border: 1px solid #B0C4DE;
     border-bottom: none;
-    /* border-radius: 10px 10px 0px 0px; */
     padding: 20px;
   }
   form, .content {
@@ -24,7 +25,6 @@
     padding: 20px;
     border: 1px solid #B0C4DE;
     background: white;
-    /* border-radius: 0px 0px 10px 10px; */
   }
   .input-group {
     margin: 10px 0px 10px 0px;
@@ -39,7 +39,6 @@
     width: 93%;
     padding: 5px 10px;
     font-size: 16px;
-    /* border-radius: 5px; */
     border: 1px solid gray;
   }
   .btn {
@@ -48,7 +47,6 @@
     color: rgb(0, 0, 0);
     background: rgb(230, 200, 104);
     border: none;
-    /* border-radius: 5px; */
   }
   .error {
     width: auto; 
@@ -57,7 +55,6 @@
     border: 1px solid #a94442; 
     color: #a94442; 
     background: #f2dede; 
-    /* border-radius: 5px;  */
     text-align: left;
   }
   .success {
@@ -68,21 +65,18 @@
   }
 
   .topMenu {
-    
     vertical-align: middle;
     margin: 0;
-    padding-left: 10;
-    padding-top: 20;
-    padding-bottom: 20;
+    padding: 0;
     width: 100%;
     white-space: nowrap;
 }
 
-  .topMenuElem {
-    font-size: 100%;
+.topMenuElem {
     height: auto;
     display: inline-block;
-    width: 30%;
+    width: auto;
+    margin-right: 10%;
 
 }
 

@@ -1,14 +1,14 @@
 <head>
+    <link rel="stylesheet" href="/Styles/main.css">
     <title>Not found - IPch</title>
 </head>
 
 <body>
     <div class="topMenu">
-        <h1>IPch</h1>
-        <h2>Welcome back. Again.</h2>
+        <?php require "topMenuTemplate.php"; ?>
     </div>
     <hr>
-    <h1 align="center">
+    <h1 align="center" class="header">
         404 
         <?php if(isset($e)) :
             echo $e->getMessage(); 
