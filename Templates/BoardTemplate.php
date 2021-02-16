@@ -6,31 +6,12 @@
 </head>
 
 <body>
-<div class="topMenu">
-        <div class="topMenuElem">
-           <h1>IPch</h1>
-            <h2>Welcome back. Again.</h2>
-        </div>
-        <?php if(!isset($_SESSION['username'])):?>
-        <div class="topMenuElem" id="signup">
-        <a href="/signup">SignUp</a>
-        </div>
-        <div class="topMenuElem" id="login">
-        <a href="/login">Login</a>
-        </div>
-        <?php else:?>
-        <div class="topMenuElem">
-        <?php 
-            echo "Hello, ".$_SESSION['username']."!"; 
-        ?>
-        </div>
-        <div class="topMenuElem" id="logout">
-        <a href="/logout">Logout</a>
-        </div>
-        <?php endif;?>
+    <div class="topMenu">
+        <?php require "topMenuTemplate.php"; ?>
     </div>
 
     <hr>
+
 
     <div class="board">
         <?php foreach ($content['postList'] as &$item) :?>

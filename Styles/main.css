@@ -14,11 +14,12 @@ body {
 .topMenuElem {
     height: auto;
     display: inline-block;
-    width: 30%;
+    width: 20em;
+    margin-left: 1em;
 
 }
 
-#login {
+#login, #signup {
     text-align: right;
 }
 
@@ -36,6 +37,14 @@ body {
 
 #reply_to {
     margin-left: 1em;
+}
+
+#newThreadBtn {
+    background-color: rgba(230, 200, 104, 0.5);
+    border: 1px solid;
+    text-align: center;
+    padding: 1em;
+    width: 15em;
 }
 
 img {
