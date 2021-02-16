@@ -12,11 +12,14 @@
                 extract($_GET, EXTR_SKIP);
                 extract($_POST, EXTR_SKIP);
 
+                if (isset($delete))
+                    $this->controller->deletePost($delete);
+
                 if (isset($commentText) and $commentText and isset($_SESSION['token'])) {
                     $image = "";
-                    if (isset($_FILES['image']))
+                    if (isset($_FILES['image']) and !$_FILES['image']['error'])
                         $image = $this->controller->uploadImage($_FILES['image']);
-                    $this->controller->addComment($commentText, $reply, $id, $image);
+                    $this->controller->addPost($commentText, $reply, $id, $image);
                 }
 
                 $thread = $this->controller->getPost($id)->getContent();

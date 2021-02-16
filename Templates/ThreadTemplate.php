@@ -26,7 +26,7 @@
 
     
     <?php if(isset($_SESSION['token'])): ?>
-        <div class="input-group">
+        <div class="comment-group">
         <form method="post" class="textfield" enctype="multipart/form-data">
             <div>
             <?php if(isset($reply)): echo "Reply to: >>$reply"; endif; ?>
@@ -36,7 +36,6 @@
             </div>
             <button type="submit" class="btn" value="addComent">Post</button>
             <input type="file" name="image" accept="image/*">
-            </div>
         </form>
         </div>
     <?php endif; ?>

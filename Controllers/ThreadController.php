@@ -7,8 +7,8 @@ use App\Repos\PostRepository;
 
 class ThreadController extends Controller {
 
-    public function addComment($textContent, $reply, $parent, $image) {
-        $this->repo->addComment($textContent, (int)$reply, $parent, $image);
+    public function addPost($textContent, $reply, $parent, $image) {
+        $this->repo->addPost($textContent, $reply ? (int)$reply : NULL, $parent, $image);
     }
 
     public function uploadImage($image){
@@ -21,6 +21,10 @@ class ThreadController extends Controller {
 
     public function getCommentsList($id) {
         return $this->repo->uploadComments($id);
+    }
+
+    public function deletePost($id) {
+        $this->repo->deletePost((int)$id);
     }
 
     public function __construct($conn) {

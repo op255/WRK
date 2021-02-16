@@ -8,10 +8,13 @@
         protected $email;
         protected $password;
         protected $token;
+        protected $role;
 
         public function getUsername() { return $this->username; }
 
         public function getToken() { return $this->token; }
+
+        public function getRole() { return $this->role; }
 
         function __construct($user) {
             $this->id = $user['id'];
@@ -19,6 +22,7 @@
             $this->email = $user['email'];
             $this->password = $user['password'];
             $this->token = $user['token'];
+            $this->role = $user['role'];
         }
     }
 ?>

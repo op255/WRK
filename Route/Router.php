@@ -10,6 +10,7 @@ use App\Views\SignupView;
 use App\Views\LoginView;
 use App\Views\ErrorView;
 use App\Views\ConfirmationView;
+use App\Views\ThreadEditorView;
 
 
 class Router {
@@ -29,11 +30,11 @@ class Router {
             $view = new ThreadView($connection);
             $content = $id;
         }
-        elseif (substr($uri, 0, 7) == "/signup"){
+        elseif ($uri== "/signup"){
             $content = $_POST;
             $view = new SignupView($connection);
         }
-        elseif (substr($uri, 0, 6) == "/login"){
+        elseif ($uri == "/login"){
             if (isset($_SESSION['username'])) {
                 header("Location: /");
                 die();
@@ -45,10 +46,14 @@ class Router {
             $content = substr($uri, 8, strlen($uri));
             $view = new ConfirmationView($connection);
         }
-        elseif (substr($uri, 0, 7) == "/logout"){
+        elseif ($uri == "/logout"){
             session_destroy();
             unset($_SESSION);
             header("Location: /");
+        }
+        elseif ($uri== "/newthread"){
+            $content = "";
+            $view = new ThreadEditorView($connection);
         }
         elseif (substr($uri, 0, 2) == "/?" or $uri == "/") {
             $page = isset($page) ? $page : 1;
@@ -56,7 +61,7 @@ class Router {
             $content = $page;
         } 
         else {
-            $e = new \Exception("No such page");
+            $e = new \Exception("Page not found");
             ErrorView::generate($e);
             die();
         }

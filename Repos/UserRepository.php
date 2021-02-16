@@ -15,7 +15,7 @@
                 throw new \Exception("Wrong username");
             }
             if ($found['status'] == "pending") {
-                throw new \Exception("Confirm email!");
+                throw new \Exception("Confirm your email");
             }
             if ($found['password'] == md5($password)) {
                 $user = new User($found);
@@ -25,6 +25,7 @@
             }
             $_SESSION['username'] = $user->getUsername();
             $_SESSION['token'] = $user->getToken();
+            $_SESSION['role'] = $user->getRole();
 
             return $user;
         }

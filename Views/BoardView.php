@@ -9,6 +9,10 @@
 
         public function generate($page){
             try {
+                extract($_POST, EXTR_SKIP);
+                if (isset($delete))
+                    $this->controller->deletePost($delete);
+
                 $postList = $this->controller->getPostList($page);
                 $boardContent = array();
                 foreach($postList as &$post) {

@@ -1,5 +1,7 @@
 <?php
 
+    mkdir("images");
+
     require __DIR__.'/Core/Autoload.php';
 
     use App\Dev\LoremIpsum;
@@ -27,6 +29,7 @@
                     email VARCHAR( 128 ) NOT NULL,
                     password VARCHAR( 128 ) NOT NULL,
                     status VARCHAR( 16 ),
+                    role INT DEFAULT 0,
                     token VARCHAR( 128 )";
 
     $pdo->exec("CREATE TABLE IF NOT EXISTS PostDB.posts ($postsColumns)");

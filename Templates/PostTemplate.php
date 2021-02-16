@@ -19,6 +19,16 @@
             echo ">>".$post['reply_to']; 
             ?>
         </div>
+        
+        <?php if (isset($_SESSION['role']) and $_SESSION['role']): ?>
+            <div class="postTopBarElem" id="delete">
+            <form method="post" id="deleteForm">
+                <input name="delete" type="hidden" value=<?php echo $post['id']; ?>>
+                <button type="submit" value="delete">delete</button>
+            </form>
+            </div>
+        <?php endif; ?>
+        
     </div>
     <div class="postContent">
         <div class="postContentElem" id="img">
