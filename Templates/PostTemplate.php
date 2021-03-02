@@ -24,7 +24,7 @@
             <div class="postTopBarElem" id="delete">
             <form method="post" id="deleteForm">
                 <input name="delete" type="hidden" value=<?php echo $post['id']; ?>>
-                <button type="submit" value="delete">delete</button>
+                <button id="deleteBtn" type="submit" value="delete">delete</button>
             </form>
             </div>
         <?php endif; ?>
@@ -42,6 +42,7 @@
             <?php echo $post['text_content']; ?>
         </div>
     </div>
+
     <div class="postBottomBar">
         <?php if (isset($post['replies'])):?>
             Replies:

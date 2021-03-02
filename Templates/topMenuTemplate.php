@@ -1,5 +1,5 @@
 <a href="/">
-    <div class="topMenuElem">
+    <div class="topMenuElem" id="logo">
         <h1>IPch</h1>
         <h2>Welcome back. Again.</h2>
     </div>

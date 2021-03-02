@@ -11,6 +11,7 @@ use App\Views\LoginView;
 use App\Views\ErrorView;
 use App\Views\ConfirmationView;
 use App\Views\ThreadEditorView;
+use App\Views\AdminPanelView;
 
 
 class Router {
@@ -54,6 +55,10 @@ class Router {
         elseif ($uri== "/newthread"){
             $content = "";
             $view = new ThreadEditorView($connection);
+        }
+        elseif ($uri== "/admin"){
+            $content = "";
+            $view = new AdminPanelView($connection);
         }
         elseif (substr($uri, 0, 2) == "/?" or $uri == "/") {
             $page = isset($page) ? $page : 1;
